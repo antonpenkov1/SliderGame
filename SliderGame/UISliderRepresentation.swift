@@ -30,18 +30,16 @@ struct UISliderRepresentation: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(value: $currentValue, opacity: $opacity)
+        Coordinator(value: $currentValue)
     }
 }
 
 extension UISliderRepresentation {
     final class Coordinator: NSObject {
         @Binding var value: Double
-        @Binding var opacity: Double
         
-        init(value: Binding<Double>, opacity: Binding<Double>) {
+        init(value: Binding<Double>) {
             self._value = value
-            self._opacity = opacity
         }
         
         @objc func sliderMoved(_ sender: UISlider) {
